@@ -1,8 +1,8 @@
 #pragma once
 #include <functional>
 #include <memory>
-#include "Connection.txx"
-#include "Slot.txx"
+#include "Connection.hxx"
+#include "Slot.hxx"
 template<class ... Types>
 class Signal {
 public:

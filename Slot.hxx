@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <functional>
-#include "Connection.txx"
+#include "Connection.hxx"
 template<class ... Types>
 class Slot {
 public:
