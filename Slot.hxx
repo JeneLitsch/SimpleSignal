@@ -12,11 +12,11 @@ public:
 		this->fx = std::make_shared<std::function<void(Types...)>>(fx);
 	}
 
-private:
 	//creates a connection is used by the signal in connect()
 	Connection<Types...> createConnection() const{
 		return Connection<Types...>(fx);
 	}
+private:
 
 	std::shared_ptr<std::function<void(Types...)>> fx;
 };
