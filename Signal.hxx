@@ -10,10 +10,12 @@ public:
 	//emits a signal and calls all connection
 	//if a connection is invalid it will be removed
 	void emit(Types... param){
-		long last = this->connections.size() -1;
+		long last = static_cast<long>(this->connections.size() -1);
 		for(long i = last; i >= 0; i--) {
+
 			//get connection
-			Connection<Types...> & connection = this->connections[i];
+			std::size_t idx = static_cast<std::size_t>(i);
+			Connection<Types...> & connection = this->connections[idx];
 
 			//if connection i valid -> call the connection
 			if(connection){
@@ -33,7 +35,16 @@ public:
 
 	//add a new connection to a given slot to the signal
 	void connect(const Slot<Types...> & slot){
-		this->connections.push_back(slot.createConnection());
+		Connection<Types...> newConnection = slot.createConnection();
+
+		// prevent duplicate connections
+		for(const Connection<Types...> & existingConnection : this->connections){
+			if(existingConnection == newConnection){
+				return;
+			}
+		}
+
+		this->connections.push_back(newConnection);
 	}
 
 private:

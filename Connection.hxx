@@ -25,6 +25,10 @@ public:
 		return !this->fx.expired();
 	}
 
+	bool operator==(const Connection & connection){
+		return std::shared_ptr(this->fx) == std::shared_ptr(connection.fx);
+	}
+
 private:
 	std::weak_ptr<std::function<void(Types...)>> fx;
 };
