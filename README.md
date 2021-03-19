@@ -5,38 +5,38 @@ A simple signal system I made for my current game project.
 - non copyable
 
 #### Slot(const std::function & fx)
-  creates a new slot with fx as callback function
-  fx is called if an connected signal is emitted
+  Creates a new slot with fx as callback function.<br/>
+  "fx" is called if an connected signal is emitted.<br/>
 
 #### void changeFunction(const std::function & fx)
-  changes function 
-  note: invalidates all connections to this slot
+  Changes function <br/> 
+  note: Invalidates all connections to this slot.<br/>
 
 #### Connections createConnection()
-  creates a Connection to Slot
-  used by signal in connect(Slot)
+  Creates a Connection to Slot.<br/>
+  Is used by signal in connect(Slot).<br/>
  
   
 ## Connections<Types...> 
  
 #### Connections(std::shared_ptr<std::function<void(Types...)>> fx_)<br/>
-  creates a Connection with a weak-ptr to fx_<br/>
+  Creates a Connection with a weak-ptr to fx_<br/>
 
 #### operator(...)
-  Calls function<br/>
-  warning: it's unchecked please use valid() before<br/>
+  Calls function.<br/>
+  warning: It's unchecked please use valid() before.<br/>
   
 #### bool valid() and operator bool()
-  return true if connected slot is still connected and if fx can safely be called<br/>
-  In case of an issues false is returned<br/>
+  "valid()" return true if connected slot is still connected and if fx can safely be called.<br/>
+  In case of an issues false is returned.<br/>
   
 ## Signal<Types...>
 
-void emit(...)
-  calls all valid connections and clean up invalid ones additonally<br/>
+#### void emit(...)
+  Calls all valid connections and clean up invalid ones additonally<br/>
 
 #### void connect(const Slot &)
-  connects signal to a slot<br/>
-  don't allow duplicate connections<br/>
-  if a slot is already connected this function returns without adding a second connection<br/>
-  note: Slot::createConnections is nonetheless but returned Connection is discarded<br/>
+  Connects signal to a slot.<br/>
+  Don't allow duplicate connections.<br/>
+  If a slot is already connected this function returns without adding a second connection.<br/>
+  note: Slot::createConnections is nonetheless but returned Connection is discarded.<br/>
