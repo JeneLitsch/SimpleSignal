@@ -1,6 +1,9 @@
 # SimpleSignal
 A simple signal system I made for my current game project.
 
+## Types...
+Types... are the parameter of the signal 
+
 ## Slot<Types...>
 - non copyable
 
