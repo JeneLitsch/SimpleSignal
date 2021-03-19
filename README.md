@@ -19,7 +19,7 @@ A simple signal system I made for my current game project.
   
 ## Connections<Types...> 
  
-#### Connections(std::shared_ptr<std::function<void(Types...)>> fx_)<br/>
+#### Connections(std::shared_ptr<std::function<void(Types...)>> fx_)
   Creates a Connection with a weak-ptr to fx_<br/>
 
 #### operator(...)
